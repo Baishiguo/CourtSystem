@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../resources/v2/static/tdh/reset.css"/>
+    <link rel="stylesheet" href="../resources/v2/static/tdh/btn/css/btn.css"/>
+    <script src="../resources/v2/static/lib/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../resources/v2/static/plugg/layui/lay/modules/layer.js" type="text/javascript"
+            charset="utf-8"></script>
+
+    <link rel="stylesheet" type="text/css" href="../css/main.css"/>
+    <script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/EyeCare.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/config.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/main.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/genToken.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+        .container {
+            padding-right: 60px;
+            box-sizing: border-box;
+        }
+
+        .main_r_small {
+            display: block;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 60px;
+            background-color: #fff;
+            z-index: 99;
+        }
+
+        .main_l, .wrapper_small .main_l {
+            margin-right: 0;
+        }
+
+        .main_r {
+            width: 700px;
+            margin-right: -760px;
+            background-color: #E8E8E8;
+            border-right: 1px solid #E8E8E8;
+            box-sizing: border-box;
+            display: none;
+        }
+
+        .wrapper_small .main_r {
+            position: absolute;
+            top: 0;
+            right: -760px;
+            width: 700px;
+            margin-right: 0;
+            z-index: 10;
+        }
+
+        .wrapper_small .arrow_r,
+        .wrapper_small .main_r_large {
+            display: block;
+        }
+
+        .wrapper_small .main_r_large {
+            border-left: 1px solid #E8E8E8;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <!--		<div class="top">-->
+    <!--			<div class="fl">-->
+    <!--				<em class="top_name">案号：<span id="ahmc"></span></em>-->
+    <!--			</div>-->
+    <!--			<div class="fr">-->
+    <!--				<a id="hyms" class="tdh_btn" onclick="eyeCare()"><i class="tdh_icon icon_hyms"></i><em>护眼模式</em></a>-->
+    <!--				<i class="border"></i>-->
+    <!--				<a class="tdh_btn" onclick="resizeWindow('change')"><i class="tdh_icon icon_ymqh"></i>页面切换</a>-->
+    <!--				&lt;!&ndash; <i class="border"></i> &ndash;&gt;-->
+    <!--				&lt;!&ndash;<a class="tdh_btn"><i class="tdh_icon icon_czzy"></i>操作指引</a>&ndash;&gt;-->
+    <!--			</div>-->
+    <!--		</div>-->
+    <div class="container">
+        <!-- 功能按钮开始 -->
+        <div class="main_r_small nicescroll">
+            <ul class="sidenav" id="rightMenuFinal">
+                <li id="yj" class="sidenav_yjbj" onclick="toggleShowYw('yj','阅卷笔记',this)" title="查看本案文件的阅卷笔记与批注">阅卷笔记
+                </li>
+<!--                <li id="fxzt" style="height: auto" class="sidenav_fxzt" onclick="toggleShowYw('fxzt','法信智推',this)" title="智能推送本案相关案例">法信智推-->
+<!--                </li>-->
+<!--                <li id="fxjs" style="height: auto" class="sidenav_fxjs" onclick="toggleShowYw('fxjs','法信检索',this)" title="检索最高法网络平台内法律法规">-->
+<!--                    法信检索-->
+<!--                </li>-->
+<!--                <li id="clsx" class="sidenav_clsx" onclick="toggleShowYw('clsx','材料属性',this)"-->
+<!--                    title="智能展示对应文件基础属性与生命历程属性如：签章、送达等">材料属性-->
+<!--                </li>-->
+<!--                <li class="sidenav_spyd" onclick="toggleShowYw('spyd','双屏阅读',this)" title="可以对加入双屏阅读的材料进行对比阅读">双屏阅读<i-->
+<!--                        id="spydNum" class="numbox">0</i></li>-->
+<!--                <li id="znyj" style="height: auto;display: none;" class="sidenav_znyj" onclick="toggleShowYw('znyj','智能阅卷',this)"-->
+<!--                    title="">智能阅卷-->
+<!--                </li>-->
+<!--                <li id="zjjh" style="height: auto" class="sidenav_zjjh" onclick="toggleShowYw('zjjh','证据交换',this)" title="证据交换">-->
+<!--                    证据交换-->
+<!--                </li>-->
+<!--                <li id="zjgk" style="height: auto;display: none;" class="sidenav_jzgk" onclick="toggleShowYw('zjgk','卷宗公开',this)" title="卷宗公开">-->
+<!--                    卷宗公开-->
+<!--                </li>-->
+<!--                <li id="ajbl2" style="height: auto;display: none;" class="sidenav_ajbl" onclick="toggleShowYw('ajbl','案件办理',this)" title="案件办理">-->
+<!--                    案件办理-->
+<!--                </li>-->
+<!--                <li id="yssp" style="height: auto;display: none;" class="sidenav_yssp" onclick="toggleShowYw('yssp','要素审判',this)" title="要素审判">-->
+<!--                    要素审判-->
+<!--                </li>-->
+<!--                <li id="sfsd" style="height: auto;display: none;" class="sidenav_sfsd" onclick="toggleShowYw('sfsd','司法送达',this)" title="司法送达">-->
+<!--                    司法送达-->
+<!--                </li>-->
+<!--                <li id="flws" style="height: auto;display: none;" class="sidenav_jzgk" onclick="toggleShowYw('flws','法律文书',this)" title="法律文书">-->
+<!--                    法律文书-->
+<!--                </li>-->
+            </ul>
+        </div>
+        <!-- 功能按钮结束 -->
+        <!--阅读笔记开始-->
+        <div class="main main_r">
+            <span class="arrow_r">
+                <iframe frameborder="0" scrolling="no" style="background: none; left: 0px; top: 0px; width: 100%; height: 100%; position: absolute; z-index: -1; opacity: 0;filter:alpha(opacity=0)"></iframe>
+                <div style="width: 14px; height: 65px;"></div>
+            </span>
+            <div class="main_r_large">
+                <!-- <div data-tab class="tabs">
+                    <ul>
+                        <li id="yj" class="act" onclick="loadYj();" title="查看本案文件的阅卷笔记与批注">阅卷</li>
+                        <li id="fxjs" title="检索最高法网络平台内法律法规">法信检索</li>
+                        <li id="fxzt" onclick="setFrame('#contFrame','bajz/fxzt/main')" title="智能推送本案相关案例">法信智推</li>
+                        <li id="clsx" onclick="loadClsx();" title="智能展示对应文件基础属性与生命历程属性如：签章、送达等">材料属性</li>
+                        <li onclick="setFrame('#contFrame','bajz/spyd/main')" title="可以对加入双屏阅读的材料进行对比阅读">双屏阅读<i id="spydNum" class="numbox">0</i></li>
+                    </ul>
+                </div> -->
+                <div class="content" style="height: 100%;">
+                    <iframe id="contFrame" name="contFrame" src="" frameborder="0"
+                            style="width: 100%;height: 100%;"></iframe>
+                </div>
+            </div>
+        </div>
+        <!--阅读笔记结束-->
+        <!--本案卷宗开始-->
+        <div class="main main_l">
+            <!--				<div data-tab class="tabs">-->
+            <!--					<ul>-->
+            <!--						&lt;!&ndash; 选中改为白色底色，同之前的选中、非选中互换一下 lijj&ndash;&gt;-->
+            <!--						<li onclick="changeTab(1)" class="act" id="bajz">本案卷宗</li>-->
+            <!--						<li onclick="changeTab(2)" class='grey displaynone' id="ysjz" >原审卷宗（<span id="yaxxCount">&nbsp;</span>）</li>-->
+            <!--&lt;!&ndash;						<i class="numbox" style="display:inline-block">3</i>&ndash;&gt;-->
+            <!--					</ul>-->
+            <!--				</div>-->
+            <div class="content">
+                <iframe id="mainFrame" src="" name="mainFrame" frameborder="0" scrolling="no"
+                        style="width: 100%;height: 100%;"></iframe>
+            </div>
+        </div>
+        <!--本案卷宗结束-->
+    </div>
+</div>
+</body>
+<script>
+    $(function() {
+        // getLabel("SFDSJURL", function (result) {
+        //     if(result.code == 0){
+        //         var sm = $.trim(result.data);
+        //         if(sm != ""){
+        //             $("#fxzt").text(sm);
+        //         }
+        //     }
+        // });
+        // getLabel("FXURL", function (result) {
+        //     if(result.code == 0){
+        //         var sm = $.trim(result.data);
+        //         if(sm != ""){
+        //             $("#fxjs").text(sm);
+        //         }
+        //     }
+        // });
+        getTuDmKzByDm("QYXBYJ");
+        if("1"==tudmkzVal['QYXBYJ']){
+            $("#znyj").show();
+        }else{
+            $("#znyj").hide();
+        }
+
+        initBtn();
+    });
+
+    function initBtn() {
+        if(parent.isShowAjbl=="0"){
+            $("#ajbl2").show();
+        }
+        if(parent.isShowSfsd=="0"){
+            $("#sfsd").show();
+        }
+        if(parent.isShowFlws=="0"){
+            $("#flws").show();
+        }
+        if(parent.isShowYssp=="0"){
+            $("#yssp").show();
+        }
+        if(parent.isShowJzgk=="0"){
+            $("#zjgk").show();
+        }
+    }
+
+    /**
+     * 1920分辨率-右侧展示按钮
+     */
+    function showBtn(value) {
+        if (value == "ajbl") {
+            $("#ajbl2").show();
+        }else if (value == "yssp") {
+            $("#yssp").show();
+        }else if (value == "flws") {
+            $("#flws").show();
+        }else if (value == "sfsd") {
+            $("#sfsd").show();
+        }else if (value == "jzgk") {
+            $("#zjgk").show();
+        }
+    }
+
+    /**
+     * 1920分辨率-右侧影藏按钮
+     */
+    function hideBtn(value) {
+        if (value == "ajbl") {
+            $("#ajbl2").hide();
+        }else if (value == "yssp") {
+            $("#yssp").hide();
+        }else if (value == "flws") {
+            $("#flws").hide();
+        }else if (value == "sfsd") {
+            $("#sfsd").hide();
+        }else if (value == "jzgk") {
+            $("#zjgk").hide();
+        }
+    }
+
+    function toggleShowYw(lx, str, that) {
+        // lx = lx || '';
+        // var sidenavLx = $('.sidenav').attr('lx') || '';
+        // if(sidenavLx == ''){
+        // 	$('.sidenav').attr('lx',lx);
+        // } else if(sidenavLx == lx){
+        // 	return;
+        // }
+        if (lx == 'fxjs' && !fxurl) {
+            //layer.msg('获取法信url失败！', {icon: 2});
+            return;
+        }
+        //如果此btn是打开 则关闭
+        if($(that).hasClass('act')){
+            $('.arrow_r').trigger("click");
+            return ;
+        }else{
+            $(that).addClass('act').siblings().removeClass('act');
+        }
+        if (lx == 'spyd' && $('.wrapper').hasClass('wrapper_small')) {
+            layer.msg('当前浏览器大小不支持双屏阅读，请切换<br>1920*1080以上分辨率', {icon: 7});
+            return false;
+        }
+        //窄屏弹出查看回证
+        if (lx == 'ckhz' && $('.wrapper').hasClass('wrapper_small')) {
+            ckhzScreen(str);
+            return;
+        }
+
+        //武汉和广州，法信智推，全屏弹出,法信检索全部全屏
+        var dqUtil = $.trim(base_FYDM).indexOf('4401') == 0  || $.trim(base_FYDM).indexOf('42') == 0;
+        if(lx == 'fxjs' || (dqUtil && lx == 'fxzt')){
+            allScreen(lx);
+            return;
+        }
+        //窄屏事件
+        if ($('.wrapper').hasClass('wrapper_small')) {
+            var html = '<iframe frameborder="0" scrolling="no" style="background: none; left: 0px; top: 0px; width: 100%; height: 100%; position: absolute; z-index: -1; opacity: 0;"></iframe>' +
+                '<iframe frameborder="0" scrolling="no" style="background: none; left: -14px; top: 50%; margin-top: -41px; width: 14px; height: 65px; position: absolute; z-index: -1; opacity: 0;"></iframe>';
+            $(".wrapper_small .main_r").prepend(html);
+            $(".wrapper_small .main_r").show().animate({'right': '60px'}, function () {
+                initCont();
+            });
+            // $('.arrow_r').show().removeClass('arrow_r_s');
+        } else {//宽屏事件
+            $(".main_r").show().animate({'margin-right': '0'}, function () {
+                initCont();
+            });
+            $(".main_l").animate({'margin-right': '700px'});
+            // $('.arrow_r').show().removeClass('arrow_r_s');
+        }
+
+        function initCont() {
+            if (lx == 'yj') {
+                showContentFrame('bajz/yj/main.html?ahdm=' + base_AHDM + '&fydm=' + base_FYDM);
+            } else if (lx == 'fxzt') {
+                setFrame('#contFrame', 'bajz/fxzt/main')
+            } else if (lx == 'clsx') {
+                showContentFrame('bajz/clsx/main.html?ahdm=' + base_AHDM + '&fydm=' + base_FYDM);
+            } else if (lx == 'znyj') {
+                showContentFrame('bajz/znyj/main.html?ahdm=' + base_AHDM + '&fydm=' + base_FYDM);
+            }else if (lx == 'spyd') {
+                showContentFrame('bajz/spyd/main.html');
+            } else if (lx == 'fxjs') {
+                var url = '';
+                var date = formatDate("yyyyMMddHHmm", new Date());
+                var key = date + $.trim(userInfo.yhdm);
+                if (base_FYDM.indexOf("44") == 0) {
+                    url = fxurl + "?authcode=" + encodeStr($.trim(userInfo.yhdm)) + "&anyou=" + encodeStr($.trim(caseInfo.aymc));
+                    url += "&key=" + encodeStr(key) + "&type=" + encodeStr(caseInfo.ajlbmc) + "&xtid=" + base_XTID;
+                } else {
+                    url = fxurl + (fxurl.indexOf("?") == -1 ? "?" : "&") + "key=" + encodeStr(key) + "&authcode=" + encodeStr($.trim(userInfo.yhdm))
+                        + "&realname=" + encodeStr($.trim(userInfo.yhxm)) + "&xtid=" + base_XTID;
+                }
+                url += "&project=lnzkyx";
+                setFrame2('#contFrame', url);
+            } else if (lx == 'zjjh') {
+                //证据交换
+                showContentFrame('bajz/zjjh/main.html?ahdm=' + base_AHDM + '&fydm=' + base_FYDM);
+            } else if (lx == 'zjgk') {
+                //卷宗公开
+                showContentFrame('bajz/jzgk/jzgk_main.html?ahdm=' + base_AHDM + '&fydm=' + base_FYDM);
+            } else if (lx == 'ckhz') {
+                //查看回证
+                showContentFrame('bajz/ckwj/main.html?ahdm=' + base_AHDM + '&fydm=' + base_FYDM + '&sdhzxh=' + str);
+            } else if (lx == 'ajbl') {
+                showContentFrame('bajz/ajbl/main.html?ahdm='+base_AHDM+'&fydm='+base_FYDM+'&xtid='+base_XTID);
+            }else if (lx == 'yssp') {
+                showContentFrame(parent.ysspUrl+"/view/ysxxMain?ahdm="+base_AHDM + "&tokenid="+genToken());
+            }else if (lx == 'sfsd') {
+                if (parent.sfsdUrl=="") {
+                    showContentFrame("");
+                    alert("司法送达地址未配置，请联系管理员！");
+                }else {
+                    showContentFrame(parent.sfsdUrl+"/webapp/gabqNew/gabqNewMain.do?ahdm="+base_AHDM + "&fydm="+$.trim(base_FYDM)+"&nd="+parent.nd+"&dzjzfq=1&ymkd=2&type=dqrxl&ywlx="+base_XTID.toUpperCase()+"&yydm=JZGL&tokenid="+genToken());
+                }
+            }else if (lx == 'flws') {
+                if(parent.flwsUrl==""){
+                    showContentFrame("");
+                    alert("法律文书地址未配置，请联系管理员！");
+                }else{
+                    if(isIeExplore()){
+                        showContentFrame(parent.flwsUrl+"/baws/baws_pdf.jsp?ahdm="+base_AHDM+"&fydm="+base_FYDM+"&xtid="+base_XTID.toUpperCase()+"&tokenid="+genToken());
+                    }else{
+                        //非IE浏览器使用卷宗NG拦截WSPT的前端路径
+                        showContentFrame(base_WEB_PATH+"wspt/baws/baws_pdf.jsp?ahdm="+base_AHDM+"&fydm="+base_FYDM+"&xtid="+base_XTID.toUpperCase()+"&tokenid="+genToken())
+                    }
+                }
+            }
+        }
+    }
+
+    /*法信检索、法信智推全屏*/
+    function allScreen(lx){
+        if(lx == 'fxzt'){
+            openMax(base_WEB_URL+"/dzjz/pages/bajz/fxzt/main.html?ahdm=" + base_AHDM+ "&fydm=" + base_FYDM);
+        }else{
+            var url = '';
+            var date = formatDate("yyyyMMddHHmm", new Date());
+            var key = date + $.trim(userInfo.yhdm);
+
+            if (base_FYDM.indexOf("44") == 0) {
+                url = fxurl + "?authcode=" + encodeStr($.trim(userInfo.yhdm)) + "&anyou=" + encodeStr($.trim(caseInfo.aymc));
+                url += "&key=" + encodeStr(key) + "&type=" + encodeStr(caseInfo.ajlbmc) + "&xtid=" + base_XTID;
+            } else {
+                url = fxurl + (fxurl.indexOf("?") == -1 ? "?" : "&") + "key=" + encodeStr(key) + "&authcode=" + encodeStr($.trim(userInfo.yhdm))
+                    + "&realname=" + encodeStr($.trim(userInfo.yhxm)) + "&xtid=" + base_XTID;
+            }
+            url += "&project=lnzkyx";
+            openMax(url);
+        }
+    }
+
+    /*窄屏模式下查看回证全屏*/
+    function ckhzScreen(sdhzxh){
+        openMax(base_WEB_URL + '/dzjz/pages/bajz/ckwj/main.html?ahdm=' + base_AHDM + '&fydm=' + base_FYDM + '&sdhzxh=' + sdhzxh);
+    }
+</script>
+</html>
